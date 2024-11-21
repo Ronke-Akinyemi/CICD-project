@@ -1,0 +1,13 @@
+name: My CICD Project
+on: 
+  push:
+    branches: ["main"]
+  workflow_dispatch: 
+jobs: 
+  test: 
+    runs-on: ubuntu-latest
+    steps: 
+    - name: hello world
+      run: echo "how are you"
+      
+
