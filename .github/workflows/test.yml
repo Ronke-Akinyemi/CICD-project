@@ -23,7 +23,7 @@ jobs:
         python manage.py test 
   build:
     needs: test
-    runs: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
     - name: login_to_docker
       uses: docker/login-action@v3
