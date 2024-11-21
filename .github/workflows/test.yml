@@ -35,6 +35,17 @@ jobs:
       with:
         push: true
         tags: ronke222/cicd:latest
-
-
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: login to server and deploy
+      uses: appleboy/ssh-action@master
+      with: 
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USER }}
+        key: ${{ secrets.PRIVATE_KEY }}
+        scripts: |
+          sudo docker pull ronke222/cicd:latest
+          sudo docker run --itd --name app -p 8000:8000 -e SECRET_KEY=${{ secrets.SECRET_KEY }} -e DEBUG=True ronke222/cicd:latest
 
