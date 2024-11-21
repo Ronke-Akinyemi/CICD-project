@@ -47,5 +47,6 @@ jobs:
         key: ${{ secrets.PRIVATE_KEY }}
         script: |
           sudo docker pull ronke222/cicd:latest
-          sudo docker run --itd --name app -p 8000:8000 -e SECRET_KEY=tey%wa0cb2p=mm*43hgikmk!x14c9bk=8+!p^5-_v)$gvox)nq -e DEBUG=True ronke222/cicd:latest
+          sudo docker rm -f $(sudo docker ps -q -a)
+          sudo docker run --itd --name app -p 8000:8000 -e SECRET_KEY=aaaaaaaavvvvcccccc -e DEBUG=True ronke222/cicd:latest
 
